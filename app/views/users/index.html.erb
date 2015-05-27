@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<h1>User List</h1>
+ 
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>My Blogs</th>
+    <th>Prifile Pic</th>
+
+  </tr>
+ 
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.first_name %></td>
+      <td><%= u.last_name %></td>
+      <td><%= u.username %></td>
+      <td><%= u.password %></td>
+      <td><%= u.about_me %></td>
+      <td><%= u.blog_page %></td>
+      <td><%= u.profile_pic %></td>
+      <td><%= link_to "Show", user_path(u.id) %>
+      	<%= link_to "Edit", edit_user_path(u.id) %>
+      	<%= link_to "Delete", user_path(u.id), method: :delete, data: { confirm: "Are you sure you want to delete this user?"} %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+ <%= link_to "Add new user", new_user_path %>
+
