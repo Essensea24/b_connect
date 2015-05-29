@@ -1,10 +1,27 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<strong><%= @user.username %></strong>
-</p>
- 
-<div>
-	<strong> Your Blogs </strong>
-</div>
-<%= link_to 'Edit', edit_user_path%> |
-<%= link_to 'Back', users_path %>
+<h1>Welcome</h1>
+
+<% if current_user %> <!-- if current_user and user is login are true display below -->
+  
+  You are login as <%= current_user.first_name %>
+  <div>
+    <th>Name</th>
+    <th>Email</th>
+  </div>
+  <p>
+  <strong><%= @user.username %></strong>
+  </p>
+  <p>
+  <strong><%= @user.first_name%></strong>
+  </p>
+
+  <div> <!-- provide button for user to logout -->
+  <%= link_to "Log Out", logout_path, method: :delete %>
+  </div>
+
+<% else %> <!-- if user doesn't exist or not login -->
+  <div>
+    <%= link_to "Sign Up", new_user_path %>
+    <%= link_to "Log In", login_path %>
+  </div>
+<% end %>
+

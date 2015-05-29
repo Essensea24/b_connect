@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		user = User.find_by(email: params[:login][:email]) #find by email, which is the login email that user input on the login session
 		if user && user.authenticate(params[:login][:password]) # no == true required, rails knows we wants the both values to be true
 			session[:user_id] = user.id.to_s #create cookie for this session
-			redirect_to users_path
+			redirect_to user_path(user.id)
 		else
 		 	render :new
 		end
