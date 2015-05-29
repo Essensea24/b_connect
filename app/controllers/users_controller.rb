@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    session[:user_id] = @user.id.to_s
   end
 
   def new
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id.to_s
-      redirect_to user_path(@user.id), notice: 'New user was successfully created, please signin'
+      redirect_to user_path(@user.id), notice: 'Your account is now created'
     else 
       render :new
     end
@@ -29,7 +30,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to users_path, notice: 'User profile was successfully updated.'
+      session[:user_id] = @user.id.to_s
+      redirect_to user_path(@user.id), notice: 'User profile was successfully updated.'
     else
       render :edit
     end
