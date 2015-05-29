@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   
+  get 'blogs/index'
+
+  get 'blogs/create'
+
+  get 'blogs/new'
+
+  get 'blogs/edit'
+
+  get 'blogs/update'
+
+  get 'blogs/destroy'
+
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
   delete "logout"         => "sessions#destroy"

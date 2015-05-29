@@ -2,15 +2,12 @@
 <% if current_user %> <!-- if current_user and user is login are true display below -->
   
   You are login as <%= current_user.first_name %>
-  <div>
-    <th>Name</th>
-    <th>Email</th>
-  </div>
+ 
   <p>
-  <strong><%= @user.username %></strong>
+  <strong>User Name: </strong><%= @user.username %>
   </p>
   <p>
-  <strong><%= @user.first_name%></strong>
+  <strong>First Name: </strong><%= @user.first_name%>
   </p>
 
   <div> <!-- provide button for user to logout -->
