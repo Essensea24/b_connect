@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
     end
 
     def new
-      @user = session[:user_id]
+      User.find(session[:user_id])
     end
 
     def create
@@ -26,22 +26,25 @@ class BlogsController < ApplicationController
 
   
 
-    # def edit
-    #   @user = session[:user_id]
-    # end
+    def edit
+      @user = User.find(session[:user_id])
+      @blog = @user.blogs.find(params[:id])
+    end
 
-    # def update
-    # # @user = User.find(params[:user_id])
-    #   if @blog.update_attributes(blog_params)
-    #     redirect_to blogs_path
-    #   else
-    #     render :edit
-    #   end
+    def update
+      @user = User.find(session[:user_id])
+      @blog = @user.blogs.find(params[:id])
+      if @blog.update_attributes(blog_params)
+        redirect_to user_path(@user.id)
+      else
+        render :edit
+      end
 
-    # end
+    end
 
     def destroy
       @user =  User.find(session[:user_id])
+      @blog = @user.blogs.find(params[:id])
       @blog.destroy
       redirect_to user_path(@user.id)
     end
