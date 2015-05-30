@@ -1,2 +1,24 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<h1>Your Blogs</h1>
+<div>
+<%= link_to 'Create a New Blog', new_user_blog_path %>
+</div>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Country</th>
+    <th>Description</th>
+  </tr>
+ 
+  <% @blogs.each do |b| %>
+    <tr>
+      <td><%= b.title %></td>
+      <td><%= b.country %></td>
+      <td><%= b.description %></td>
+      <td><%= link_to 'Show', blog_path(b) %></td>
+      <td><%= link_to 'Delete', blog_path(b),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to delete?' } %></td>
+    </tr>
+  <% end %>
+</table>

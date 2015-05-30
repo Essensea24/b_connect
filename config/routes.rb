@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
   
-  get 'blogs/index'
 
-  get 'blogs/create'
-
-  get 'blogs/new'
-
-  get 'blogs/edit'
-
-  get 'blogs/update'
-
-  get 'blogs/destroy'
 
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
   delete "logout"         => "sessions#destroy"
 
+  get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs
+  get "users/:user_id/blogs/new"  => "blogs#new", as: :new_user_blog
+  get "users/:user_id/blogs/:id"  => "blogs#show", as: :user_blog
+  post "users/:user_id/blogs" => "blogs#create"
+  get "users/:user_id/blogs/:id/edit" => "blogs#edit", as: :edit_user_blog
   
+  patch "users/:user_id/blogs/:id" => "blogs#update" 
+  delete "users/:user_id/blogs/:id"        => "blogs#destroy"
+  
+
   root 'sessions#new'
 
+
+  # users rest
   get "users/"            => "users#index"
   get "users/new"         => "users#new",     as: :new_user
   get "users/:id"         => "users#show",    as: :user

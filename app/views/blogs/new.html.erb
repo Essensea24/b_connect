@@ -1,2 +1,48 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+ 
+<p>
+  <strong>Name</strong>
+  <%= @user.first_name %>
+</p>
+ 
+<h2>Add a blog:</h2>
+	<%= form_for([@user, @user.blogs.build]) do |f| %>
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<h2>
+					<%= pluralize(@user.errors.count, "error") %> prohibited
+					this user from being saved:
+				</h2>
+				<ul>
+					<% @user.errors.full_messages.each do |msg| %>
+					  <li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<p>
+			<%= f.label :image %><br>
+			<%= f.text_area :image %>
+		</p>
+		<p>
+			<%= f.label :title %><br>
+			<%= f.text_field :title %>
+		</p>
+		<p>
+			<%= f.label :country %><br>
+			<%= f.text_area :country %>
+		</p>
+		<p>
+			<%= f.label :description %><br>
+			<%= f.text_area :description %>
+		</p>
+		<p>
+			<%= f.submit %>
+		</p>
+		<% end %>
+ 
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', articles_path %>

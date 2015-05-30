@@ -1,0 +1,20 @@
+<p>
+  <strong>Title:</strong>
+  <%= blog.title %>
+</p>
+ 
+<p>
+  <strong>Country:</strong>
+  <%= blog.country %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= blog.description %>
+</p>
+
+<p>
+  <%= link_to 'Delete', [blog.user, blog],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
