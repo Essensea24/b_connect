@@ -24,8 +24,8 @@
 			</div>
 		<% end %>
 		<p>
-			<%= f.label :image %><br>
-			<%= f.text_area :image %>
+			<%= f.label :photo %><br>
+			<%= f.text_area :photo %>
 		</p>
 		<p>
 			<%= f.label :title %><br>
@@ -45,4 +45,4 @@
 		<% end %>
  
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', user_path(@user) %>

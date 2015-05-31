@@ -15,10 +15,12 @@
       <td><%= b.title %></td>
       <td><%= b.country %></td>
       <td><%= b.description %></td>
-      <td><%= link_to 'Show', blog_path(b) %></td>
-      <td><%= link_to 'Delete', blog_path(b),
+      <td><%= link_to 'Show', user_blog_path(@user.id, :blog) %></td>
+      <td><%= link_to 'Delete', user_blog_path(@user.id, :blog),
               method: :delete,
               data: { confirm: 'Are you sure you want to delete?' } %></td>
     </tr>
   <% end %>
 </table>
+
+<%= link_to 'Back', user_path(@user) %>

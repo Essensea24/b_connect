@@ -1,22 +1,25 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  # before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
 
     def index
+      @user =  User.find(session[:user_id])
       @blogs = Blog.all
     end
 
     def show 
       @user =  User.find(session[:user_id])
+      @blog = Blog.find(params[:id])
     end
 
     def new
-      User.find(session[:user_id])
+      @user = User.find(session[:user_id])
     end
 
     def create
-      @user =  User.find(session[:user_id])
-      @blog = @user.blogs.create(blog_params)
+      @user = User.find(session[:user_id])
+      @blog = @user.blogs.new(blog_params)
+
       if @blog.save
         redirect_to user_path(@user.id)
       else 
@@ -34,7 +37,7 @@ class BlogsController < ApplicationController
     def update
       @user = User.find(session[:user_id])
       @blog = @user.blogs.find(params[:id])
-      if @blog.update_attributes(blog_params)
+      if @blog.update
         redirect_to user_path(@user.id)
       else
         render :edit
@@ -51,13 +54,13 @@ class BlogsController < ApplicationController
 
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_blog
-      @blog = Blog.find(params[:id])
-      end
+      # def set_blog
+      # @blog = Blog.find(params[:id])
+      # end
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def blog_params
-      params.require(:blog).permit(:title, :country, :description)
+      params.require(:blog).permit(:photo, :title, :country, :description)
       end
 
    

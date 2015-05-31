@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   get "users/:user_id/blogs/:id"  => "blogs#show", as: :user_blog
   post "users/:user_id/blogs" => "blogs#create"
   get "users/:user_id/blogs/:id/edit" => "blogs#edit", as: :edit_user_blog
-  
   patch "users/:user_id/blogs/:id" => "blogs#update" 
-  delete "users/:user_id/blogs/:id"        => "blogs#destroy"
+  delete "users/:user_id/blogs/:id" => "blogs#destroy"
   
 
   root 'sessions#new'
