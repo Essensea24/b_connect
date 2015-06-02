@@ -1,27 +1,25 @@
 class BlogsController < ApplicationController
-  # before_action :set_blog, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorized?,  only: [:new, :create, :show]
 
     def index
-      @user =  User.find(session[:user_id])
-      @blogs = Blog.all
+      blogs = Blog.all
     end
 
     def show 
-      @user =  User.find(session[:user_id])
       @blog = Blog.find(params[:id])
+
     end
 
     def new
-      @user = User.find(session[:user_id])
+      @blog = Blog.new
     end
 
     def create
-      @user = User.find(session[:user_id])
-      @blog = @user.blogs.new(blog_params)
+      blog = Blog.new(blog_params)
+      blog.user_id = session[:user_id]
 
-      if @blog.save
-        redirect_to user_path(@user.id)
+      if blog.save
+        redirect_to user_path(session[:user_id])
       else 
         render :new
       end
@@ -30,18 +28,13 @@ class BlogsController < ApplicationController
   
 
     def edit
-      @user = User.find(session[:user_id])
-      @blog = @user.blogs.find(params[:id])
+      blog = Blog.find(params[:id])
     end
 
     def update
-      @user = User.find(session[:user_id])
-      @blog = @user.blogs.find(params[:id])
-      if @blog.update
-        redirect_to user_path(@user.id)
-      else
-        render :edit
-      end
+      @blog = Blog.find(params[:id])
+      @blog.user_id = session[:user_id]
+      @blog.update_attributes(blog_params)
 
     end
 
@@ -50,6 +43,7 @@ class BlogsController < ApplicationController
       @blog = @user.blogs.find(params[:id])
       @blog.destroy
       redirect_to user_path(@user.id)
+    
     end
 
     private
