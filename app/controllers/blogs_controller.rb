@@ -2,48 +2,41 @@ class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create, :show]
 
     def index
-      blogs = Blog.all
+      @user = get_user
+      @blogs = @user.blogs
     end
 
     def show 
-      @blog = Blog.find(params[:id])
-
+      @blog = get_blog
     end
 
     def new
-      @blog = Blog.new
+      @blog = get_user.blogs.build
     end
 
     def create
-      blog = Blog.new(blog_params)
-      blog.user_id = session[:user_id]
 
-      if blog.save
-        redirect_to user_path(session[:user_id])
+      @blog = get_user.blogs.create(blog_params)
+
+      if @blog.save
+        redirect_to user_path(get_user)
       else 
         render :new
       end
     end
 
-  
-
     def edit
-      blog = Blog.find(params[:id])
+      @blog = get_blog
     end
 
     def update
-      @blog = Blog.find(params[:id])
-      @blog.user_id = session[:user_id]
-      @blog.update_attributes(blog_params)
-
+        get_blog.update_attributes(blog_params)
+        redirect_to user_path(get_user)
     end
 
     def destroy
-      @user =  User.find(session[:user_id])
-      @blog = @user.blogs.find(params[:id])
-      @blog.destroy
-      redirect_to user_path(@user.id)
-    
+      get_blog.destroy
+      redirect_to user_path(get_user)
     end
 
     private
@@ -54,7 +47,15 @@ class BlogsController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def blog_params
-      params.require(:blog).permit(:photo, :title, :country, :description)
+        params.require(:blog).permit(:photo, :title, :country, :description)
+      end
+
+      def get_user
+        User.find(params[:user_id])
+      end
+
+      def get_blog
+        get_user.blogs.find(params[:id])
       end
 
    
