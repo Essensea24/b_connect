@@ -20,9 +20,7 @@
       <td><%= u.username %></td>
       <td><%= u.about_me %></td>
       <td><%= u.profile_pic %></td>
-      <td><%= link_to "Show", user_path(u.id) %>
-      	<%= link_to "Edit", edit_user_path(u.id) %>
-      	<%= link_to "Delete", user_path(u.id), method: :delete, data: { confirm: "Are you sure you want to delete this user?"} %>
+      <td><%= link_to "Show", user_page_path(u.id) %>
       </td>
     </tr>
   <% end %>

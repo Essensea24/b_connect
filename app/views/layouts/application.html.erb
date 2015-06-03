@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
+<h3>Account: <%= current_user.username %></h3>
+<h3>Email Address: <%= current_user.email %> </h3>
+<% end %>
+
 <%= params %>
 <hr>
 <%= yield %>

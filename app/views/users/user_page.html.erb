@@ -1,7 +1,7 @@
-<%= notice %>
+
 <% if current_user %>
- <!-- if current_user and user is login are true display below -->
- 
+
+  <p>
   <strong>User Name: </strong><%= @user.username %>
   </p>
   <p>
@@ -17,7 +17,6 @@
   </p>
   <strong>First Name: </strong><%= @user.profile_pic%>
   </p>
-
   <div>
   <!-- provide button for user to logout -->
     <%= link_to "Log Out", logout_path, method: :delete %>
@@ -25,13 +24,25 @@
     <%= link_to "Edit", edit_user_path(@user.id) %>
     <%= link_to "Delete", user_path(@user.id), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
   </div>
-
-<% else %><!-- if user doesn't exist or not login -->
-  
-  <div>
+<% else %>
+<p>
+  <strong>User Name: </strong><%= @user.username %>
+  </p>
+  <p>
+  <strong>First Name: </strong><%= @user.first_name%>
+  </p>
+  <strong>First Name: </strong><%= @user.last_name%>
+  </p>
+  <strong>First Name: </strong><%= @user.email%>
+  </p>
+  </p>
+  <strong>First Name: </strong><%= @user.about_me%>
+  </p>
+  </p>
+  <strong>First Name: </strong><%= @user.profile_pic%>
+  </p>
+ <div>
     <%= link_to "Sign Up", new_user_path %>
     <%= link_to "Log In", login_path %>
   </div>
 <% end %>
-
-

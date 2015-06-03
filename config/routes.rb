@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   get "users/:id/edit"    => "users#edit",    as: :edit_user
   patch "users/:id"       => "users#update",  as: :update_user
   delete "users/:id"      => "users#destroy"
+  get "users/:id/my_blogs"          => "users#my_blogs", as: :my_blogs
+  get "users/:id/page" => "users#user_page", as: :user_page
   
 
 
