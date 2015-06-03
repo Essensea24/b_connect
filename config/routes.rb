@@ -1,10 +1,40 @@
 Rails.application.routes.draw do
 
-
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
   delete "logout"         => "sessions#destroy"
 
+  # resources :users do 
+  #   resources :posts
+  # end
+
+  # resources :users do
+  #     resources :comments
+  
+  # end
+
+  # resources :posts do
+  #   resources :comments
+  # end 
+
+  get "/users/:user_id/comments" => "comments#index", as: :user_comments
+  get "/users/:user_id/comments/new" => "comments#new", as: :new_user_comment
+  get "/users/:user_id/comments/:id/edit" => "comments#edit", as: :edit_user_comments
+  post "/users/:user_id/comments" => "comments#create"
+  get "/users/:user_id/comments/:id" => "comments#show", as: :user_comment
+  patch "/users/:user_id/comments/:id" => "comments#update"
+  delete "/users/:user_id/comments/:id" => "comments#destroy"
+
+
+  get "/posts/:post_id/comments" => "comments#index", as: :blog_comments
+  get "/posts/:post_id/comments/new" => "comments#new", as: :new_blog_comment
+  get "/posts/:post_id/comments/:id/edit" => "comments#edit", as: :edit_blog_comments
+  post "/posts/:post_id/comments" => "comments#create"
+  get "/posts/:post_id/comments/:id" => "comments#show", as: :blog_comment
+  patch "/posts/:post_id/comments/:id" => "comments#update"
+  delete "/posts/:post_id/comments/:id" => "comments#destroy"
+
+  
   get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs
   get "users/:user_id/blogs/new"  => "blogs#new", as: :new_user_blog
   get "users/:user_id/blogs/:id"  => "blogs#show", as: :user_blog
