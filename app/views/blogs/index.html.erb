@@ -2,7 +2,6 @@
 <div>
 <% if current_user %>
 <%= link_to 'Create a New Blog', new_user_blog_path(current_user.id) %>
-<%end %>
 </div>
 
 <table>
@@ -18,16 +17,33 @@
       <td><%= b.country %></td>
       <td><%= b.description %></td>
       <td><%= link_to 'Show', [b] %></td>
-      <% if current_user %>
       <td><%= link_to 'Delete', [b],
               method: :delete,
               data: { confirm: 'please login to delete this post' } %></td>
-      <% end %>
     </tr>
-  <% end %>
+    <% end %>
 </table>
 
-<% if current_user %>
 <%= link_to 'Back', user_path(current_user.id) %>
 <%= link_to "Log Out", logout_path, method: :delete %>
+
+<% else %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Country</th>
+    <th>Description</th>
+  </tr>
+
+<% @blogs.each do |b| %>
+  <tr>
+    <td><%= b.title %></td>
+    <td><%= b.country %></td>
+    <td><%= b.description %></td>
+    <td><%= link_to 'Show', [b] %></td>
+  </tr>
+  <% end %>
+</table>
+  <%= link_to "Sign Up", new_user_path %>
+
 <% end %>

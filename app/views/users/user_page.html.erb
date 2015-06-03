@@ -42,7 +42,9 @@
   <strong>First Name: </strong><%= @user.profile_pic%>
   </p>
  <div>
+    <%= link_to "Visit this user's blogs", user_all_blogs_path(@user) %>
     <%= link_to "Sign Up", new_user_path %>
     <%= link_to "Log In", login_path %>
+    <%= link_to "Back", blogs_path %>
   </div>
 <% end %>

@@ -1,20 +1,33 @@
 <%= notice %>
 
-<%= current_user.id if current_user%>
 <% if current_user %> <!-- if current_user and user is login are true display below -->
  
-  <h2>Your Blogs</h2>
-  <%= render @user.blogs%>
-  </div>
+  <h2>Blogs</h2>
+  <table>
+  <tr>
+    <th>Title</th>
+    <th>Country</th>
+    <th>Description</th>
+  </tr>
+ 
+  <% current_user.blogs.each do |b| %>
+    <tr>
+      <td><%= b.title %></td>
+      <td><%= b.country %></td>
+      <td><%= b.description %></td>
+      <td><%= link_to 'Show', [b] %></td>
+      <td><%= link_to 'Delete', [b],
+              method: :delete,
+              data: { confirm: 'please login to delete this post' } %></td>
+    </tr>
+    <% end %>
+</table>
 
   <div>
 
   <h2>Add a new blog</h2>
   <%= link_to "New Blog", new_user_blog_path(current_user.id) %>
   </div>
-
-
-
 
   <div> 
   <!-- provide button for user to logout -->
