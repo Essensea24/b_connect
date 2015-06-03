@@ -18,9 +18,11 @@
       <td><%= b.country %></td>
       <td><%= b.description %></td>
       <td><%= link_to 'Show', [b] %></td>
+      <% if current_user %>
       <td><%= link_to 'Delete', [b],
               method: :delete,
               data: { confirm: 'please login to delete this post' } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
