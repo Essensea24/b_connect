@@ -26,13 +26,13 @@ Rails.application.routes.draw do
   delete "/users/:user_id/comments/:id" => "comments#destroy"
 
 
-  get "/posts/:post_id/comments" => "comments#index", as: :blog_comments
-  get "/posts/:post_id/comments/new" => "comments#new", as: :new_blog_comment
-  get "/posts/:post_id/comments/:id/edit" => "comments#edit", as: :edit_blog_comments
-  post "/posts/:post_id/comments" => "comments#create"
-  get "/posts/:post_id/comments/:id" => "comments#show", as: :blog_comment
-  patch "/posts/:post_id/comments/:id" => "comments#update"
-  delete "/posts/:post_id/comments/:id" => "comments#destroy"
+  get "/blogs/:blog_id/comments" => "comments#index", as: :blog_comments
+  get "/blogs/:blog_id/comments/new" => "comments#new", as: :new_blog_comment
+  get "/blogs/:blog_id/comments/:id/edit" => "comments#edit", as: :edit_blog_comments
+  post "/blogs/:blog_id/comments" => "comments#create"
+  get "/blogs/:blog_id/comments/:id" => "comments#show", as: :blog_comment
+  patch "/blogs/:blog_id/comments/:id" => "comments#update"
+  delete "/blogs/:blog_id/comments/:id" => "comments#destroy"
 
   
   get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs
@@ -45,6 +45,16 @@ Rails.application.routes.draw do
   
 
   root 'sessions#new'
+
+
+  get "blogs/"            => "blogs#index"
+  get "blogs/new"         => "blogs#new",     as: :new_blog
+  get "blogs/:id"         => "blogs#show",    as: :blog
+  post "blogs/"           => "blogs#create"
+  get "blogs/:id/edit"    => "blogs#edit",    as: :edit_blog
+  patch "blogs/:id"       => "blogs#update",  as: :update_blog
+  delete "blogs/:id"      => "blogs#destroy"
+  
 
 
   # users rest

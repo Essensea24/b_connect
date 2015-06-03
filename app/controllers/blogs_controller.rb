@@ -1,9 +1,8 @@
 class BlogsController < ApplicationController
-  before_action :authorized?,  only: [:new, :create, :show]
+  before_action :authorized?,  only: [:new, :create]
 
     def index
-      @user = get_user
-      @blogs = @user.blogs
+      @blogs = Blog.all
     end
 
     def show 
@@ -45,11 +44,11 @@ class BlogsController < ApplicationController
 
     def destroy
         @blog = get_blog
-        if @blog.user_id == current_user.id
+        if current_user
           get_blog.destroy
           redirect_to user_path(get_user)
         else 
-          redirect_to user_path(current_user)
+          redirect_to login_path
         end
       
     end

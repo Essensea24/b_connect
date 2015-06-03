@@ -1,6 +1,8 @@
-<h1>Your Blogs</h1>
+<h1> All Blogs</h1>
 <div>
+<% if current_user %>
 <%= link_to 'Create a New Blog', new_user_blog_path %>
+<%end %>
 </div>
 
 <table>
@@ -15,12 +17,15 @@
       <td><%= b.title %></td>
       <td><%= b.country %></td>
       <td><%= b.description %></td>
-      <td><%= link_to 'Show', [b.user, b] %></td>
-      <td><%= link_to 'Delete', [b.user, b],
+      <td><%= link_to 'Show', [b] %></td>
+      <td><%= link_to 'Delete', [b],
               method: :delete,
-              data: { confirm: 'Are you sure you want to delete?' } %></td>
+              data: { confirm: 'please login to delete this post' } %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Back', user_path(@user) %>
+<% if current_user %>
+<%= link_to 'Back', user_path(current_user.id) %>
+<%= link_to "Log Out", logout_path, method: :delete %>
+<% end %>
