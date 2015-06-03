@@ -15,29 +15,42 @@ class BlogsController < ApplicationController
     end
 
     def create
-
+       
         @blog = get_user.blogs.create(blog_params)
-        
-          if @blog.save
-            redirect_to user_path(get_user)
-          else 
-            render :new
-          end 
+         
+            if @blog.save
+              redirect_to user_path(get_user)
+            else 
+              render :new
+            end
+ 
     end
 
     def edit
       @blog = get_blog
+      unless @blog.user.id == current_user.id 
+        redirect_to user_path(current_user)
+      end
     end
 
     def update
+      @blog = get_blog
+      if @blog.user_id == current_user.id
         get_blog.update_attributes(blog_params)
         redirect_to user_path(get_user)
+      end
+     
     end
 
-    def destroy
 
-        get_blog.destroy
-        redirect_to user_path(get_user)
+    def destroy
+        @blog = get_blog
+        if @blog.user_id == current_user.id
+          get_blog.destroy
+          redirect_to user_path(get_user)
+        else 
+          redirect_to user_path(current_user)
+        end
       
     end
 
@@ -57,7 +70,7 @@ class BlogsController < ApplicationController
       end
 
       def get_blog
-        get_user.blogs.find(params[:id])
+        Blog.find(params[:id])
       end
 
    
