@@ -1,5 +1,12 @@
 <h1>welcome</h1>
 
+<% if current_user %>
+<p>You are now logged in as <%= current_user.username %>
+</p>
+
+<%= link_to "Your Account", user_path(current_user) %>
+<% else %> 
+
 <h1>Log In</h1>
 
 <%= form_for :login do |f| %>
@@ -21,3 +28,4 @@
 <% end %>
 
 <%= link_to "Sign Up", new_user_path %>
+<% end %>

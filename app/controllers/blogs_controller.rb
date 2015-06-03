@@ -16,19 +16,13 @@ class BlogsController < ApplicationController
 
     def create
 
-      if get_user == current_user.id
         @blog = get_user.blogs.create(blog_params)
-
+        
           if @blog.save
             redirect_to user_path(get_user)
           else 
             render :new
-          end
-      else 
-        redirect_to user_path(current_user), notice: "Authorization denied."
-      end 
-      
-
+          end 
     end
 
     def edit
@@ -41,8 +35,10 @@ class BlogsController < ApplicationController
     end
 
     def destroy
-      get_blog.destroy
-      redirect_to user_path(get_user)
+
+        get_blog.destroy
+        redirect_to user_path(get_user)
+      
     end
 
     private
