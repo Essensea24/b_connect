@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   delete "users/:user_id/blogs/:id" => "blogs#destroy"
   
 
-  root 'sessions#new'
+  root 'blogs#index'
 
 
   get "blogs/"            => "blogs#index"
