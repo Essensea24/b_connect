@@ -2,20 +2,21 @@
 <% if current_user %>
  <!-- if current_user and user is login are true display below -->
  
+  <p>
   <strong>User Name: </strong><%= @user.username %>
   </p>
   <p>
   <strong>First Name: </strong><%= @user.first_name%>
   </p>
-  <strong>First Name: </strong><%= @user.last_name%>
+  <strong>Last Name: </strong><%= @user.last_name%>
   </p>
-  <strong>First Name: </strong><%= @user.email%>
-  </p>
-  </p>
-  <strong>First Name: </strong><%= @user.about_me%>
+  <strong>Email Name: </strong><%= @user.email%>
   </p>
   </p>
-  <strong>First Name: </strong><%= @user.profile_pic%>
+  <strong> About Me: </strong><%= @user.about_me%>
+  </p>
+  </p>
+  <strong>Profile Picture: </strong><%= image_tag @user.image.url(:large)%>
   </p>
 
   <div>

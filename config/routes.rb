@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'statics/index'
+
+  get 'statics/home'
+
+  get 'statics/about'
+
+  get 'statics/contact'
+
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
   delete "logout"         => "sessions#destroy"
@@ -44,7 +52,7 @@ Rails.application.routes.draw do
   delete "users/:user_id/blogs/:id" => "blogs#destroy"
   
 
-  root 'blogs#index'
+  root 'statics#index'
 
 
   get "blogs/"            => "blogs#index"

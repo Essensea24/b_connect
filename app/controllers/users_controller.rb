@@ -4,10 +4,6 @@ class UsersController < ApplicationController
   def user_page
   end
 
-  def my_blogs
-    
-  end 
-
   def user_blogs
   end
 
@@ -56,6 +52,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :about_me, :blog_page, :profile_pic)
+      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :about_me, :blog_page, :image)
     end
 end
