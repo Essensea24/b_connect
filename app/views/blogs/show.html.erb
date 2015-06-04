@@ -15,8 +15,27 @@
 			</p>
 		</div>
 		<div>
-			<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
-      </td>
+
+		<h2>Comments</h2> <!-- listing out all the comment for this post -->
+		<% @blog.comments.each do |c| %> <!-- list out all the comments in the context of the article -->
+		<p>
+		  <strong>User</strong>
+		  <%= c.username %>
+		</p>
+		 
+		<p>
+		  <strong>Comment:</strong>
+		  <%= c.body %>
+		</p>
+
+		<% end %>
+	
+
+
+		<h2>Add a comment:</h2> <!-- add a comment form -->
+		<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
+		<td><%#= link_to "Make a comment", new_blog_comment_path(@blog_comment, @user_comment) %></td>
+			<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %></td>
 		</div>
 	
 

@@ -1,38 +1,65 @@
 class CommentsController < ApplicationController
+
+  def index
+    @blog = get_blog
+    @comments = Comment.all
+  end 
+
  
   def new
-    @user_comment = get_user.comments.build
-    @blog_comment = get_blog.comments.build
+    @blog = get_blog
+    @comment = get_comment
+    @user = current_user
+
   end
 
   def create
-    @user_comment = get_user.comments.create(comment_params)
-    @blog_comment = get_blog.comments.create(comment_params)
+    @blog = get_blog
+    @user = current_user
+    @user_comment = @user.comments.create(comment_params) 
+    @user_comment.blog_id = @blog.id
 
-    if @user_comment.save & @blog_comment.save
-      redirect to blog_path(@blog.id)
+    @user_comment.username = current_user.username
+
+    if @user_comment.save
+      redirect_to blog_path(@blog.id)
     else
       render :new
     end
   end
 
   def edit
+
+    @comment = get_comment
+    unless @comment.user.id == current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
+    @comment = get_comment
+    if @comment.user_id == current_user.id
+        get_comment.update_attributes(comment_params)
+        redirect_to user_path(get_user)
+    end
+
   end
 
   def destroy
+    @comment = get_comment
+    if @comment.user_id == current_user.id
+      get_comment.destroy
+      redirect_to user_path(get_user)
+    else 
+      redirect_to login_path
+    end
   end
 
   private 
     def comment_params
-      params.require(:comment).permit(:username, :body)
+      params.require(:comment).permit(:username, :body, :comment_id)
     end
 
-    def get_user
-      User.find(params[:user_id])
-    end
 
     def get_blog
       Blog.find(params[:blog_id])

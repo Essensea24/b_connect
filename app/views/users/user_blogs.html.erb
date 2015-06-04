@@ -12,9 +12,8 @@
       <td><%= b.country %></td>
       <td><%= b.description %></td>
       <td><%= link_to 'Show', [b] %></td>
-      <td><%= link_to 'Delete', [b],
-              method: :delete,
-              data: { confirm: 'please login to delete this post' } %></td>
     </tr>
     <% end %>
+    <h2>Add a new blog</h2>
+  <%= link_to "New Blog", new_user_blog_path(current_user.id) %>
 </table>
