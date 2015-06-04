@@ -1,12 +1,16 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
+     def my_blogs
+    end 
+
     def index
       @blogs = Blog.all
     end
 
     def show 
       @blog = get_blog
+      # @comment = Comment.find(params[:id])
     end
 
     def new
@@ -18,7 +22,7 @@ class BlogsController < ApplicationController
         @blog = get_user.blogs.create(blog_params)
          
             if @blog.save
-              redirect_to user_path(get_user)
+              redirect_to user_all_blogs_path(current_user)
             else 
               render :new
             end
@@ -28,7 +32,7 @@ class BlogsController < ApplicationController
     def edit
       @blog = get_blog
       unless @blog.user.id == current_user.id 
-        redirect_to user_path(current_user)
+        redirect_to user_all_blogs_path(@user.id)
       end
     end
 
@@ -44,9 +48,10 @@ class BlogsController < ApplicationController
 
     def destroy
         @blog = get_blog
-        if current_user
-          get_blog.destroy
-          redirect_to user_path(get_user)
+      
+        if @blog.user_id == current_user.id
+          @blog.destroy
+          redirect_to user_path(current_user)
         else 
           redirect_to login_path
         end
@@ -61,7 +66,7 @@ class BlogsController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def blog_params
-        params.require(:blog).permit(:photo, :title, :country, :description)
+        params.require(:blog).permit( :title, :country, :description, :image)
       end
 
       def get_user

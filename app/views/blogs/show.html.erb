@@ -1,4 +1,4 @@
-<h1>this blogs</h1>
+<h1>this blog</h1>
 
 		<div>
 			<p>
@@ -27,7 +27,8 @@
 		  <strong>Comment:</strong>
 		  <%= c.body %>
 		</p>
-
+		<%= link_to "Edit this comment", edit_blog_comments_path(@blog.id, c.id) %>
+		<%= link_to "Delete this comment", blog_comment_destroy_path(@blog, c), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
 		<% end %>
 	
 
@@ -35,7 +36,8 @@
 		<h2>Add a comment:</h2> <!-- add a comment form -->
 		<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
 		<td><%#= link_to "Make a comment", new_blog_comment_path(@blog_comment, @user_comment) %></td>
-			<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %></td>
+			<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
+			</td>
 		</div>
 	
 

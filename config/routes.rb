@@ -17,22 +17,22 @@ Rails.application.routes.draw do
   #   resources :comments
   # end 
 
-  get "/users/:user_id/comments" => "comments#index", as: :user_comments
-  get "/users/:user_id/comments/new" => "comments#new", as: :new_user_comment
-  get "/users/:user_id/comments/:id/edit" => "comments#edit", as: :edit_user_comments
-  post "/users/:user_id/comments" => "comments#create"
-  get "/users/:user_id/comments/:id" => "comments#show", as: :user_comment
-  patch "/users/:user_id/comments/:id" => "comments#update"
-  delete "/users/:user_id/comments/:id" => "comments#destroy"
-
-
   get "/blogs/:blog_id/comments" => "comments#index", as: :blog_comments
   get "/blogs/:blog_id/comments/new" => "comments#new", as: :new_blog_comment
   get "/blogs/:blog_id/comments/:id/edit" => "comments#edit", as: :edit_blog_comments
   post "/blogs/:blog_id/comments" => "comments#create"
   get "/blogs/:blog_id/comments/:id" => "comments#show", as: :blog_comment
   patch "/blogs/:blog_id/comments/:id" => "comments#update"
-  delete "/blogs/:blog_id/comments/:id" => "comments#destroy"
+  delete "/blogs/:blog_id/comments/:id" => "comments#destroy", as: :blog_comment_destroy
+
+  get "/users/:user_id/comments" => "comments#index", as: :user_comments
+  get "/users/:user_id/comments/new" => "comments#new", as: :new_user_comment
+  get "/users/:user_id/comments/:id/edit" => "comments#edit", as: :edit_user_comments
+  post "/users/:user_id/comments" => "comments#create"
+  get "/users/:user_id/comments/:id" => "comments#show", as: :user_comment
+  patch "/users/:user_id/comments/:id" => "comments#update"
+  delete "/users/:user_id/comments/:id" => "comments#destroy", as: :user_comment_destroy
+
 
   
   get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs

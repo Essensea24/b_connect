@@ -29,18 +29,16 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
+    @blog = get_blog
     @comment = get_comment
-    unless @comment.user.id == current_user.id
-      redirect_to user_path(current_user)
-    end
   end
 
   def update
+    @blog = get_blog
     @comment = get_comment
     if @comment.user_id == current_user.id
         get_comment.update_attributes(comment_params)
-        redirect_to user_path(get_user)
+        redirect_to blog_path(@blog.id)
     end
 
   end
@@ -48,8 +46,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = get_comment
     if @comment.user_id == current_user.id
-      get_comment.destroy
-      redirect_to user_path(get_user)
+      @comment.destroy
+      redirect_to blog_path(get_blog)
     else 
       redirect_to login_path
     end

@@ -1,2 +1,16 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<h1>Edit your comment</h1>
+<%= form_for [@blog, @comment] do |f| %>
+ <!-- 
+	<p>
+		<%= f.label :username %><br>
+		<%= f.text_field :username %>
+	</p> -->
+
+	<p>
+		<%= f.label :body %><br>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+    <%= f.submit "Edit comment" %>
+  </p>
+<% end %>

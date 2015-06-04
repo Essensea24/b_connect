@@ -11,7 +11,9 @@
       <td><%= b.title %></td>
       <td><%= b.country %></td>
       <td><%= b.description %></td>
+      <td><%= image_tag b.image.url(:large) %></td>
       <td><%= link_to 'Show', [b] %></td>
+
     </tr>
     <% end %>
     <h2>Add a new blog</h2>

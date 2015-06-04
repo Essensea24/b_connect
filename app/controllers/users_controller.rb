@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def my_blogs
+    
   end 
 
   def user_blogs
