@@ -29,6 +29,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'bootstrap-sass'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
