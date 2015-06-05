@@ -33,7 +33,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem "searchkick" 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 
 # Use Unicorn as the app server
