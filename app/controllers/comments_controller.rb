@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     @user_comment.username = current_user.username
 
     if @user_comment.save
-      redirect_to blog_path(@blog.id)
+      redirect_to blog_path(@blog.id), notice: 'Thanks for commenting on my post'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
     @comment = get_comment
     if @comment.user_id == current_user.id
         get_comment.update_attributes(comment_params)
-        redirect_to blog_path(@blog.id)
+        redirect_to blog_path(@blog.id), notice: 'Comment updated'
     end
 
   end
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
       @comment.destroy
       redirect_to blog_path(get_blog)
     else 
-      redirect_to login_path
+      redirect_to blog_path(get_blog), notice: 'Sorry you are not allowed to delete this comment'
     end
   end
 

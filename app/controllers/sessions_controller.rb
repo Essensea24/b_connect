@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = user.id.to_s #create cookie for this session
 			redirect_to user_path(user), notice: "Welcome, you are now login."
 		else
-		 	render :new
+		 	render :new, notice: "Please check your username and password and try again"
 		end
 	end
 

@@ -6,10 +6,11 @@
 
 <%= link_to "Your Account", user_path(current_user) %>
 <% else %> 
-
+<%= notice %>
 <h1>Log In</h1>
 
 <%= form_for :login do |f| %>
+
 	<div>
 		<%= f.label :email %>
 		<%= f.text_field :email %>

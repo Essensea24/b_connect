@@ -1,45 +1,35 @@
 <h1>this blog</h1>
+	<%= notice %>
 
-		<div>
-			<p>
-				<strong>Title: </strong><%= @blog.title %>
-			</p>
-			<p>
-				<strong>Country: </strong><%= @blog.country%>
-			</p>
-			<p>
-				<strong>Picture: </strong><%= @blog.description %>
-			</p>
-			<p>
-				<strong>Description: </strong><%= @blog.description%>
-			</p>
-		</div>
-		<div>
+<div>
+	<p><strong>Title: </strong><%= @blog.title %></p>
+	<p><strong>Country: </strong><%= @blog.country%></p>
+	<p><strong>Picture: </strong><td><%= image_tag @blog.image.url(:large) %></td></p>
+	<p><strong>Description: </strong><%= @blog.description%></p>
+<div>
 
-		<h2>Comments</h2> <!-- listing out all the comment for this post -->
-		<% @blog.comments.each do |c| %> <!-- list out all the comments in the context of the article -->
-		<p>
-		  <strong>User</strong>
-		  <%= c.username %>
-		</p>
-		 
-		<p>
-		  <strong>Comment:</strong>
-		  <%= c.body %>
-		</p>
+<h2>Comments</h2> <!-- listing out all the comment for this post -->
+<% @blog.comments.each do |c| %> <!-- list out all the comments in the context of the article -->
+	<p><strong>User</strong><%= c.username %></p>
+
+	<p><strong>Comment:</strong><%= c.body %></p>
+	
+	<% if current_user and current_user.id == c.user_id %>
 		<%= link_to "Edit this comment", edit_blog_comments_path(@blog.id, c.id) %>
-		<%= link_to "Delete this comment", blog_comment_destroy_path(@blog, c), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
-		<% end %>
-	
+		<%= link_to "Delete this comment", blog_comment_destroy_path(@blog, c), method: :delete, data: { confirm: "Are you sure you want to delete this comment?"} %>
+	<% end %>
+<% end %>
 
 
-		<h2>Add a comment:</h2> <!-- add a comment form -->
-		<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
-		<td><%#= link_to "Make a comment", new_blog_comment_path(@blog_comment, @user_comment) %></td>
-			<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
-			</td>
-		</div>
-	
+
+<h2>Add a comment:</h2> <!-- add a comment form -->
+<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
+
+<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
+<td><%= link_to "All Blogs", blogs_path%></td>
+<td><%= link_to "Map", maps_path, class: "btn btn-xs btn-primary" %></td>
+</div>
+
 
  
 
