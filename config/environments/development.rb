@@ -26,6 +26,13 @@ config.action_mailer.smtp_settings = {
   password:             'ENV["GMAIL_PASSWORD"]',
   authentication:       'plain',
   enable_starttls_auto: true  }
+
+config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => 'essenseablogs'
+  }
+}
   
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
