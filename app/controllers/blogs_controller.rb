@@ -1,7 +1,16 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
-     def my_blogs
+     def maps
+      @blogs = Blog.all
+      respond_to do |format|
+        format.html {
+            render
+        }
+        format.json {
+            render json: @blogs
+        }
+      end
     end 
 
     def index

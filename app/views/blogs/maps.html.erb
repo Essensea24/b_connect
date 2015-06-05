@@ -1,0 +1,19 @@
+
+ <%= link_to "Login", login_path %>
+  <%= link_to "Sign Up", new_user_path %>
+
+<div id="address-map" style="width: 100%; height: 400px;"></div>  
+<% @blogs.each do |b| %>
+  <tr>
+    <td><% b.title %></td>
+    <td><% b.country %></td>
+    <td><% b.description %></td>
+    <td><% link_to 'Show', [b] %></td>
+  </tr>
+  <% end %>
+</table>
+
+ 
+
+
+

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'statics/about'
 
-  get 'statics/contact'
+  
 
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get "users/:user_id/blogs/:id/edit" => "blogs#edit", as: :edit_user_blog
   patch "users/:user_id/blogs/:id" => "blogs#update" 
   delete "users/:user_id/blogs/:id" => "blogs#destroy"
-  
+  get 'blogs/map' => "blogs#maps", as: :maps
 
   root 'statics#index'
 
