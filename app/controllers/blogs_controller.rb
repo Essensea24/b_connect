@@ -6,11 +6,27 @@ class BlogsController < ApplicationController
 
     def index
       @blogs = Blog.all
+      respond_to do |format|
+        format.html {
+            render
+        }
+        format.json {
+            render json: @blogs
+        }
+      end 
     end
 
     def show 
       @blog = get_blog
       # @comment = Comment.find(params[:id])
+      respond_to do |format|
+        format.html {
+            render
+        }
+        format.json {
+            render json: @blog
+        }
+      end
     end
 
     def new
@@ -21,10 +37,15 @@ class BlogsController < ApplicationController
        
         @blog = get_user.blogs.create(blog_params)
          
-            if @blog.save
-              redirect_to user_all_blogs_path(current_user)
-            else 
-              render :new
+            respond_to do |format|
+              if @blog.save
+               format.html { redirect_to user_all_blogs_path(current_user)}
+               format.json { render :show, status: :created, location: @blog}
+              else 
+          
+               format.html { render :new}
+               format.json { render json: @map.errors, status: :unprocessable_entity}
+              end
             end
  
     end
@@ -39,9 +60,13 @@ class BlogsController < ApplicationController
     def update
       @blog = get_blog
       if @blog.user_id == current_user.id
-        get_blog.update_attributes(blog_params)
-        redirect_to user_path(get_user)
+          get_blog.update_attributes(blog_params)
+          respond_to do |format|
+            format.html{ redirect_to user_path(get_user)}
+            format.json { render :show, status: :ok, location: @blog }
+          end
       end
+
      
     end
 
@@ -49,12 +74,15 @@ class BlogsController < ApplicationController
     def destroy
         @blog = get_blog
       
+      respond_to do |format|
         if @blog.user_id == current_user.id
           @blog.destroy
-          redirect_to user_path(current_user)
+          format.html { redirect_to user_path(current_user) }
+          format.json { head :no_content }
         else 
           redirect_to login_path
         end
+      end
       
     end
 
