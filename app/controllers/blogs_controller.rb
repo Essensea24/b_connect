@@ -4,8 +4,14 @@ class BlogsController < ApplicationController
       def like 
        
         @blog = get_blog
-        current_user.flag(@blog, :like)
-        redirect_to blogs_path, :notice => "you now like this blog"
+        if current_user.flagged?(@blog, :like)
+          current_user.unflag(@blog, :like)
+          msg = "you now unlike this blog"
+        else 
+          current_user.flag(@blog, :like)
+           msg = "you now like this blog"
+        end 
+        redirect_to blogs_path, notice: msg
       end 
 
      def maps

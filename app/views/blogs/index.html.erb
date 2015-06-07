@@ -1,7 +1,6 @@
 <h1> All Blogs</h1>
 
 <%= notice %>
-<%= @blog.flag.count %>
   
 
 <div>
@@ -23,7 +22,7 @@
       <td><%= b.description %></td>
       <td><%= image_tag b.image.url(:large) %></td>
       <td><%= link_to 'Show', [b] %></td>
-      <td>  <td><%= link_to 'like', like_blog_path(b)%></td>
+      <td>  <td><%= toggle_like_button(b, current_user) %></td>
       <% if current_user.id == b.user_id %>
         <td><%= link_to 'Delete', [b],
                 method: :delete,
