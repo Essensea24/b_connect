@@ -14,6 +14,18 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+#relay though gmail to send mail 
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:                'smtp.gmail.com',
+  port:                       587,
+  domain:                 'example.com',
+  user_name:           ENV["GMAIL_USERNAME"],
+  password:             ENV["GMAIL_PASSWORD"],
+  authentication:       'plain',
+  enable_starttls_auto: true  
+}
+
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
