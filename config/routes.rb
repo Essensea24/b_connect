@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'likes/new'
+
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   get 'statics/index'
 
   get 'statics/home'

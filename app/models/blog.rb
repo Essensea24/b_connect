@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments, dependent: :destroy
+	has_many :likes, dependent: :destroy
 	validates :title, presence: true
 	validates :description, presence: true, length: { in: 5..200 }
 	validates :country, presence: true
