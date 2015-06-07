@@ -1,6 +1,13 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
+      def like 
+       
+        @blog = get_blog
+        current_user.flag(@blog, :like)
+        redirect_to blogs_path, :notice => "you now like this blog"
+      end 
+
      def maps
       @blogs = Blog.all
       respond_to do |format|

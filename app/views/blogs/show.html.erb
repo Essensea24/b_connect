@@ -21,9 +21,10 @@
 <% end %>
 
 
-
+<% if current_user %>
 <h2>Add a comment:</h2> <!-- add a comment form -->
 <%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
+<% end %>
 
 <td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
 <td><%= link_to "All Blogs", blogs_path%></td>

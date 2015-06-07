@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   
   # end
 
-  # resources :posts do
-  #   resources :comments
+  #  resources :blogs do
+  #   member do
+  #     get 'like'
+  #   end
+  # end
+  
   # end 
 
   get "/blogs/:blog_id/comments" => "comments#index", as: :blog_comments
@@ -62,7 +66,9 @@ Rails.application.routes.draw do
   get "blogs/:id/edit"    => "blogs#edit",    as: :edit_blog
   patch "blogs/:id"       => "blogs#update",  as: :update_blog
   delete "blogs/:id"      => "blogs#destroy"
-  # get 'blogs/' => "blogs#search", as: :search_blogs
+  get "blogs/:id/like" => "blogs#like", as: :like_blog
+  
+  
   
   
 
