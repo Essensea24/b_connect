@@ -55,7 +55,6 @@ Rails.application.routes.draw do
 
   root 'statics#index'
 
-
   get "blogs/"            => "blogs#index"
   get "blogs/new"         => "blogs#new",     as: :new_blog
   get "blogs/:id"         => "blogs#show",    as: :blog
@@ -64,7 +63,7 @@ Rails.application.routes.draw do
   patch "blogs/:id"       => "blogs#update",  as: :update_blog
   delete "blogs/:id"      => "blogs#destroy"
   # get 'blogs/' => "blogs#search", as: :search_blogs
-  get "/search" => "blogs#search", as: :search_blogs
+  
   
 
 

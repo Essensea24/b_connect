@@ -1,18 +1,6 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
-    def search
-      @blogs = Blog.search(params)
-      respond_to do |format|
-        format.html {
-            render :index
-        }
-        format.json {
-            render json: @blogs
-        }
-      end
-    end
-
      def maps
       @blogs = Blog.all
       respond_to do |format|
@@ -27,7 +15,12 @@ class BlogsController < ApplicationController
 
     def index
 
-      @blogs = Blog.all
+      if params[:search]
+        p = "%" + params[:search] + "%"
+        @blogs = Blog.where("country ILIKE ? OR title ILIKE ? OR description ILIKE ?", p, p, p)
+      else
+        @blogs = Blog.all
+      end
       respond_to do |format|
         format.html {
             render

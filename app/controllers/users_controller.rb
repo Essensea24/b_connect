@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.welcome(@user).deliver
+      UserMailer.welcome(@user).deliver_now
       session[:user_id] = @user.id.to_s
       redirect_to user_path(@user), notice: 'Your account is now created'
     else 
