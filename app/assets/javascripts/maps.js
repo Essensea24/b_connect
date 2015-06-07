@@ -43,7 +43,7 @@ function initialize_map() {
     var geocoder = new google.maps.Geocoder()
 
     // Get the page's marker data from the JSON API
-    var url = window.location.origin + window.location.pathname + ".json"
+    var url = window.location.origin + window.location.pathname + ".json" + window.location.search
 
     // Ajax the data URL (this retrieves the contents of that JSON url above)
     $.get(url, function(results){
@@ -115,7 +115,14 @@ function initialize_map() {
             }
 
             // Center and fit the map using the bounds
-            map.fitBounds(bounds)
+
+            if (promise_results.length > 1) {
+                map.fitBounds(bounds);
+            }
+            else{
+                map.setCenter(bounds.getCenter());
+                map.setZoom(4);
+            }
 
         })
 

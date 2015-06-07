@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   patch "/blogs/:blog_id/comments/:id" => "comments#update"
   delete "/blogs/:blog_id/comments/:id" => "comments#destroy", as: :blog_comment_destroy
 
+
   get "/users/:user_id/comments" => "comments#index", as: :user_comments
   get "/users/:user_id/comments/new" => "comments#new", as: :new_user_comment
   get "/users/:user_id/comments/:id/edit" => "comments#edit", as: :edit_user_comments
@@ -62,6 +63,8 @@ Rails.application.routes.draw do
   get "blogs/:id/edit"    => "blogs#edit",    as: :edit_blog
   patch "blogs/:id"       => "blogs#update",  as: :update_blog
   delete "blogs/:id"      => "blogs#destroy"
+  # get 'blogs/' => "blogs#search", as: :search_blogs
+  get "/search" => "blogs#search", as: :search_blogs
   
 
 

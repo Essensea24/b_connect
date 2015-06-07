@@ -1,6 +1,18 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
+    def search
+      @blogs = Blog.search(params)
+      respond_to do |format|
+        format.html {
+            render :index
+        }
+        format.json {
+            render json: @blogs
+        }
+      end
+    end
+
      def maps
       @blogs = Blog.all
       respond_to do |format|
@@ -14,6 +26,7 @@ class BlogsController < ApplicationController
     end 
 
     def index
+
       @blogs = Blog.all
       respond_to do |format|
         format.html {
