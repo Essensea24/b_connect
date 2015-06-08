@@ -1,4 +1,4 @@
 <%= form_tag blogs_path, method: :get do |f| %>
-<%= text_field_tag :search, nil, placeholder: "Search blogs" %>
-<%= submit_tag "Search" %>
+<%= text_field_tag :search, nil, placeholder: "Search blogs", id: "search_box" %>
+<%= submit_tag "Search", class: "submit" %>
 <% end %>

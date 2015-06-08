@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   
   # end 
 
-
+  get "blogs/:id/like"         => "like#create", as: :like
+  post "blogs/:id/like"         => "like#create"
 
 
 
@@ -50,8 +51,6 @@ Rails.application.routes.draw do
   patch "/users/:user_id/comments/:id" => "comments#update"
   delete "/users/:user_id/comments/:id" => "comments#destroy", as: :user_comment_destroy
 
-get "likes/" => "likes#create", as: :like
-post "likes/" => "likes#create"
   
   get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs
   get "users/:user_id/blogs/new"  => "blogs#new", as: :new_user_blog
@@ -62,7 +61,7 @@ post "likes/" => "likes#create"
   delete "users/:user_id/blogs/:id" => "blogs#destroy"
   get 'blogs/map' => "blogs#maps", as: :maps
 
-  
+ 
 
   get "blogs/:id"         => "blogs#show",    as: :blog
   get "blogs/"            => "blogs#index"
@@ -72,7 +71,6 @@ post "likes/" => "likes#create"
   get "blogs/:id/edit"    => "blogs#edit",    as: :edit_blog
   patch "blogs/:id"       => "blogs#update",  as: :update_blog
   delete "blogs/:id"      => "blogs#destroy"
-  get "blogs/:id/like" => "blogs#like", as: :like_blog
 
 
 

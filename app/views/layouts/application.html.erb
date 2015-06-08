@@ -14,17 +14,8 @@
 	
 </head>
 <body>
-<%= params %>
-
-<div id="search">
- 	 <%= render :partial => 'blogs/search' %> 
- </div>
-
-  <hr>
-<!-- <%# if current_user %>
-<h3>Account: <%#= current_user.username %></h3>
-<h3>Email Address: <%#= current_user.email %> </h3>
-<%# end %> -->
+<%= render partial: 'layouts/navbar' %>
+<hr>
 <%= yield %>
 
 </body>

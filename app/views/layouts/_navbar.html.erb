@@ -1,29 +1,28 @@
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">B-Connect</a>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">B_Connected</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+         <li><%= link_to "Home", root_path, class: "btn btn-s btn-primary"%></li>
+          <li><%= link_to "Blogs", blogs_path, class: "btn btn-s btn-primary" %></li>
+          <li><%= link_to "Maps", maps_path, class: "btn btn-s btn-primary" %></li>
+          <li><%= render partial: 'blogs/search'%></li>
+          <% if current_user%>
+                <li class = "btn btn-s btn-warning">Logged in as: <strong><%= current_user.first_name %></strong></li>
+          <% else %>
+          <li><%= link_to "Log In", login_path, class: "btn btn-s btn-warning" %></li>
+          <% end %>
+          
+          <!-- <li><a href="#contact">Contact</a></li> -->
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <div class = "row">
-      </div>
-      <ul class="nav navbar-nav">
-       <div class="col-md-3">
-        <li class = "logo"></li>
-        <li><%= link_to "Home", root_path, class: "btn btn-xs btn-primary"%></li>
-        <li><%= link_to "Log In", login_path, class: "btn btn-xs btn-primary" %></li>
-        </div>
-      </ul>
-      </div>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
   </nav>

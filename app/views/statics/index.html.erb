@@ -1,13 +1,42 @@
+<% if current_user %>
 
-<div class="container-fluid">
-	<%#=render partial: 'layouts/navbar'%>
-	<hr>
-	<div class = "row" id="welcome">
-		<div class = "col-md-12 welcome">
-		<h1>welcome</h1>
+<div class: "home_background">
+	<div class="home_welcome">
+
+		<hr>
+		<div class = "row" id="welcome">
+			<div class = "col-md-12 welcome">
+			<h1>Welcome Back <strong><%= current_user.first_name %></strong></h1>
+			<p></p>
+			</div>
+
 		</div>
+		<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-lg btn-success"%>
+		
+
 
 	</div>
+</div>
 
-	<li><%= link_to "Blogs", blogs_path, class: "btn btn-xs btn-primary" %></li>
-        <li><%= link_to "Map", maps_path, class: "btn btn-xs btn-primary" %></li>
+
+
+<% else %>
+<div class: "home_background">
+	<div class="home_welcome">
+
+		<hr>
+		<div class = "row" id="welcome">
+			<div class = "col-md-12 welcome">
+			<h1>Welcome</h1>
+			</div>
+
+		</div>
+
+		<%= link_to "Sign Up", new_user_path, class: "btn btn-lg btn-success" %>
+
+
+	</div>
+</div>
+
+
+<% end %> 

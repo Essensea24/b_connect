@@ -1,59 +1,156 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.navbar {
-    margin-bottom: 0px;
-  }
 
-$bgDefault      : #000000;
-$bgHighlight    : #515151;
-$colDefault     : #fffc5d;
-$colHighlight   : #ffffff;
-.navbar-default {
-  background-color: $bgDefault;
-  border-color: $bgHighlight;
-  .navbar-brand {
-    color: $colDefault;
-    &:hover, &:focus { 
-      color: $colHighlight; }}
-  .navbar-text {
-    color: $colDefault; }
-  .navbar-nav {
-    > li {
-      > a {
-        color: $colDefault;
-        &:hover,  &:focus {
-          color: $colHighlight; }}}
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}
-    > .open {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
-  .navbar-toggle {
-    border-color: $bgHighlight;
-    &:hover, &:focus {
-      background-color: $bgHighlight; }
-    .icon-bar {
-      background-color: $colDefault; }}
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $colDefault; }
-  .navbar-link {
-    color: $colDefault;
-    &:hover {
-      color: $colHighlight; }}}
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: $colDefault;
-      &:hover, &:focus {
-        color: $colHighlight; }}
-    > .active {
-      > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight; }}}
+.btn-warning{
+  margin-left: 150px;
+  height: 40px;
+  margin-top: 6px;
+  text-align: center;
+
 }
-  
+
+.home_welcome {
+  width: 20%;
+  margin-top: 20%;
+  margin-left: 40%;
+  background-color: grey;
+  text-align: center;
+  border-radius: 5%;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+.btn-success {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+
+BODY  {
+  background: url('beautiful.jpg') no-repeat center ;
+  width: 100%;
+  height: 500px;
+
+}
+
+
+
+#search_box {
+  background: #ffffff !important;
+  width: 260px;
+        height:40px;
+  color: #666666;
+  font-size: 12px;
+  font-family: Frutiger Linotype, Tahoma, Verdana;
+  font-weight: normal;
+  padding: 3px 0px 4px 5px;
+  border-top: 1px solid #d6d5d5;
+  border-right: 1px solid #d6d5d5;
+  border-left: 1px solid #d6d5d5;
+  border-bottom: 1px solid #d6d5d5;
+  background-color: lightgrey;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  margin-left: 100px;
+
+}
+
+.btn-primary {
+  margin-right: 10px;
+  height: 40px;
+  margin-top: 5px;
+  text-align: center;
+  width: 60px;
+}
+
+.submit {
+   margin-left:5px;
+   height: 40px;
+  margin-top: 5px;
+  border-radius: 5%;
+  background-color: #4ca6cf;
+}
+
+.login {
+
+  width: 30%;
+  margin-top: 20%;
+  margin-left: 40%;
+  background-color: grey;
+  text-align: center;
+  border-radius: 5%;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+
+}
+
+
+.login_button {
+  margin-left: 13%;
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 10%;
+  background-color: #4ca6cf;
+  width: 30%;
+
+}
+
+#email {
+   margin-left: 13%;
+  margin-top: 10px;
+  width: 60%;
+
+}
+
+#password {
+  margin-left: 13%;
+  width: 50%;
+}
+
+.all_blogs {
+  width: 70%;
+  margin-top: 20%;
+  margin-left: 15%;
+  background-color: grey;
+  text-align: center;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  color: white;
+  height: 50%;
+  border: solid black 5px;
+}
+
+.buttons {
+  display: inline-block;
+  list-style: none;
+  margin: 0 auto;
+}
+
+TD {
+  width: 40%;
+}
+
+TH {
+  color: black;
+   width: 40%;
+   text-align: center;
+   font-size: 16px;
+}
+
+#address-map {
+  width: 70%;
+  height: 600px;
+  margin: 5% 10% 5% 10%;
+  border: solid white 10px;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+H1 {
+  color: black;
+}
+
+

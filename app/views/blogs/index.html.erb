@@ -1,3 +1,4 @@
+<div class = "all_blogs" >
 <h1> All Blogs</h1>
 
 <%= notice %>
@@ -51,13 +52,16 @@
     <td><%= b.title %></td>
     <td><%= b.country %></td>
     <td><%= b.description %></td>
-    <td><%= link_to 'Show', [b] %></td>
+    <td><%= link_to 'Show', [b], class: "btn btn-s btn-primary" %></td>
   </tr>
   <% end %>
 </table>
-  <%= link_to "Login", login_path %>
-  <%= link_to "Sign Up", new_user_path %>
+<div class = "buttons">
+ <li><%= link_to "Sign Up", new_user_path, class: "btn btn-lg btn-success" %></li>
+ </div>
 
 <% end %>
 
-<div id="address-map" style="width: 100%; height: 400px;"></div>  
+</div>
+
+<!-- <div id="address-map" style="width: 100%; height: 400px;"></div>   -->
