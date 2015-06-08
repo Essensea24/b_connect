@@ -1,18 +1,12 @@
 class BlogsController < ApplicationController
   before_action :authorized?,  only: [:new, :create]
 
-      def like 
-       
-        @blog = get_blog
-        if current_user.flagged?(@blog, :like)
-          current_user.unflag(@blog, :like)
-          msg = "you now unlike this blog"
-        else 
-          current_user.flag(@blog, :like)
-           msg = "you now like this blog"
-        end 
-        redirect_to blogs_path, notice: msg
-      end 
+      # def like 
+      #   @blog = get_blog
+      #   @flagged = flag(@blog, :like)
+      #   @flagged.save
+      #   redirect_to blogs_path, notice: "#{current_user.first_name} liked #{@blog.title}"
+      # end 
 
      def maps
       @blogs = Blog.all
@@ -49,7 +43,7 @@ class BlogsController < ApplicationController
       # @comment = Comment.find(params[:id])
       respond_to do |format|
         format.html {
-            render
+            render :show
         }
         format.json {
             render json: @blog
@@ -58,7 +52,7 @@ class BlogsController < ApplicationController
     end
 
     def new
-      @blog = get_user.blogs.build
+    @blog = get_user.blogs.build
     end
 
     def create

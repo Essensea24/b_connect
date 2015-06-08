@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'statics/index'
+
 
   get 'statics/home'
 
   get 'statics/about'
 
-  
+
 
   get "login"             => "sessions#new"
   post "login"            => "sessions#create"
   delete "logout"         => "sessions#destroy"
 
   # resources :users do 
-  #   resources :posts
+  #   resources :likes
   # end
 
-  # resources :users do
-  #     resources :comments
+  # resources :blogs do
+  #     resources :likes
   
   # end
 
@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   # end
   
   # end 
+
+
+
+
 
   get "/blogs/:blog_id/comments" => "comments#index", as: :blog_comments
   get "/blogs/:blog_id/comments/new" => "comments#new", as: :new_blog_comment
@@ -46,7 +50,8 @@ Rails.application.routes.draw do
   patch "/users/:user_id/comments/:id" => "comments#update"
   delete "/users/:user_id/comments/:id" => "comments#destroy", as: :user_comment_destroy
 
-
+get "likes/" => "likes#create", as: :like
+post "likes/" => "likes#create"
   
   get "users/:user_id/blogs"  => "blogs#index", as: :user_blogs
   get "users/:user_id/blogs/new"  => "blogs#new", as: :new_user_blog
@@ -57,20 +62,18 @@ Rails.application.routes.draw do
   delete "users/:user_id/blogs/:id" => "blogs#destroy"
   get 'blogs/map' => "blogs#maps", as: :maps
 
-  root 'statics#index'
+  
 
+  get "blogs/:id"         => "blogs#show",    as: :blog
   get "blogs/"            => "blogs#index"
   get "blogs/new"         => "blogs#new",     as: :new_blog
-  get "blogs/:id"         => "blogs#show",    as: :blog
+
   post "blogs/"           => "blogs#create"
   get "blogs/:id/edit"    => "blogs#edit",    as: :edit_blog
   patch "blogs/:id"       => "blogs#update",  as: :update_blog
   delete "blogs/:id"      => "blogs#destroy"
   get "blogs/:id/like" => "blogs#like", as: :like_blog
-  
-  
-  
-  
+
 
 
   # users rest
@@ -86,7 +89,7 @@ Rails.application.routes.draw do
   get "users/:id/my_blogs"          => "users#my_blogs", as: :my_blogs
   get "users/:id/page" => "users#user_page", as: :user_page
 
-
+ root 'statics#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

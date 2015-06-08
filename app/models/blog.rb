@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
-	make_flaggable :like
+	# make_flaggable :like
+	has_many :likes, dependent: :destroy
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 	

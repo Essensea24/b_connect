@@ -5,32 +5,35 @@
 
 <div>
 <% if current_user %>
-<%= link_to 'Create a New Blog', new_user_blog_path(current_user.id) %>
-</div>
+  <%= current_user.first_name %>
+  <%= link_to 'Create a New Blog', new_user_blog_path(current_user.id) %>
+  </div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Country</th>
-    <th>Description</th>
-  </tr>
- 
-  <% @blogs.each do |b| %>
+  <table>
     <tr>
-      <td><%= b.title %></td>
-      <td><%= b.country %></td>
-      <td><%= b.description %></td>
-      <td><%= image_tag b.image.url(:large) %></td>
-      <td><%= link_to 'Show', [b] %></td>
-      <td>  <td><%= toggle_like_button(b, current_user) %></td>
-      <% if current_user.id == b.user_id %>
-        <td><%= link_to 'Delete', [b],
-                method: :delete,
-                data: { confirm: 'please login to delete this post' } %></td>
-          <% end %>
+      <th>Title</th>
+      <th>Country</th>
+      <th>Description</th>
     </tr>
-    <% end %>
-</table>
+   
+    <% @blogs.each do |b| %>
+      <tr>
+        <td><%= b.title %></td>
+        <td><%= b.country %></td>
+        <td><%= b.description %></td>
+        <td><%= image_tag b.image.url(:large) %></td>
+       
+
+        <% if current_user.id == b.user_id %>
+         <td><%= link_to 'Show', [b]%></td>
+        <td><%= link_to "Edit ", edit_blog_path(b.id) %></td>
+          <td><%= link_to 'Delete', [b],
+                  method: :delete,
+                  data: { confirm: 'please login to delete this post' } %></td>
+            <% end %>
+          </tr>
+      <% end %>
+      </table>
 
 <%= link_to 'Back', user_path(current_user.id) %>
 <%= link_to "Log Out", logout_path, method: :delete %>

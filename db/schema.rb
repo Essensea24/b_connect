@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607111359) do
+ActiveRecord::Schema.define(version: 20150608004925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,21 +59,15 @@ ActiveRecord::Schema.define(version: 20150607111359) do
   add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id", using: :btree
   add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings", using: :btree
 
-  create_table "friends", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
+    t.string   "username"
     t.integer  "user_id"
     t.integer  "blog_id"
-    t.integer  "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "likes", ["blog_id"], name: "index_likes_on_blog_id", using: :btree
-  add_index "likes", ["comment_id"], name: "index_likes_on_comment_id", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +91,5 @@ ActiveRecord::Schema.define(version: 20150607111359) do
   add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "blogs"
-  add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
 end

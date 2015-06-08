@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
   end
 
   def create
+     @user = current_user
     @blog = get_blog
-    @user = current_user
     @user_comment = @user.comments.create(comment_params) 
     @user_comment.blog_id = @blog.id
 
