@@ -116,7 +116,7 @@ BODY  {
   margin-left: 15%;
   background-color: grey;
   text-align: center;
-  opacity: 0.6;
+  opacity: 0.85;
   filter: alpha(opacity=60);
   color: white;
   height: 50%;
@@ -145,7 +145,7 @@ TH {
   height: 600px;
   margin: 5% 10% 5% 10%;
   border: solid white 10px;
-  opacity: 0.6;
+  opacity: 0.85;
   filter: alpha(opacity=60);
 }
 
@@ -153,4 +153,23 @@ H1 {
   color: black;
 }
 
+.profile {
+  width: 30%;
+  height: 400px;
+  background: black;
+  opacity: 0.85;
+ margin: 0 auto;
+ margin-top: 10%;
+ text-align: center;
+}
+
+.signup {
+width: 30%;
+  height: 600px;
+  background: black;
+  opacity: 0.85;
+ margin: 0 auto;
+ text-align: center;
+  
+}
 
