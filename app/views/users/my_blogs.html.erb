@@ -1,7 +1,10 @@
+<div class = "userb">
+
 <%= notice %>
 
 <% if current_user %> <!-- if current_user and user is login are true display below -->
- 
+
+<% if @blog %> 
   <h2>Blogs</h2>
   <table>
   <tr>
@@ -23,21 +26,21 @@
               data: { confirm: 'please login to delete this post' } %></td>
     </tr>
     <% end %>
+    <% end %>
 </table>
 
   <div>
-
   <h2>Add a new blog</h2>
-  <%= link_to "New Blog", new_user_blog_path(current_user.id) %>
+  <%= link_to "New Blog", new_user_blog_path(current_user.id), class: "btn btn-s btn-success"%>
   </div>
 
   <div> 
   <!-- provide button for user to logout -->
-  <%= link_to "Log Out", logout_path, method: :delete %>
-  <%= link_to "Profile", user_path(@user.id) %>
-  <%= link_to "Back to all Blogs", blogs_path %>
-  <%= link_to "Edit", edit_user_path(@user.id) %>
-  <%= link_to "Delete", user_path(@user.id), method: :delete, data: { confirm: "Are you sure you want to delete your account?"} %>
+  <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-s btn-success" %>
+  <%= link_to "Profile", user_path(@user.id), class: "btn btn-s btn-success" %>
+  <%= link_to "Back to all Blogs", blogs_path, class: "btn btn-s btn-success"%>
+  <%= link_to "Edit", edit_user_path(@user.id), class: "btn btn-s btn-success" %>
+  <%= link_to "Delete", user_path(@user.id), method: :delete, class: "btn btn-s btn-success", data: { confirm: "Are you sure you want to delete your account?"} %>
   </div>
 
 <% else %> <!-- if user doesn't exist or not login -->
@@ -46,3 +49,5 @@
     <%= link_to "Log In", login_path %>
   </div>
 <% end %>
+
+</div>

@@ -112,14 +112,14 @@ BODY  {
 
 .all_blogs {
   width: 70%;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 15%;
   background-color: grey;
   text-align: center;
   opacity: 0.85;
   filter: alpha(opacity=60);
   color: white;
-  height: 50%;
+  height: 100%;
   border: solid black 5px;
 }
 
@@ -161,6 +161,8 @@ H1 {
  margin: 0 auto;
  margin-top: 10%;
  text-align: center;
+ border-radius: 5%;
+ padding-botton: 10px;
 }
 
 .signup {
@@ -170,7 +172,7 @@ width: 30%;
   opacity: 0.85;
  margin: 0 auto;
  text-align: center;
- color: white;
+ color: grey;
   
 }
 
