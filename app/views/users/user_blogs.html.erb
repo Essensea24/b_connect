@@ -1,5 +1,6 @@
 
-<h2>Blogs</h2>
+<div class = "userb" >
+<h2><%= @user.first_name%>'s Blogs</h2>
   <table>
   <tr>
     <th>Title</th>
@@ -13,11 +14,19 @@
       <td><%= b.country %></td>
       <td><%= b.description %></td>
       <td><%= image_tag b.image.url(:large) %></td>
-      <td><%= link_to 'Show', [b] %></td>
+      <td><%= link_to 'Show', [b], class: "btn btn-s btn-primary"%></td>
 
     </tr>
     <% end %>
 </table>
 
+<% if current_user %>
 <h2>Add a new blog</h2>
   <%= link_to "New Blog", new_user_blog_path(current_user.id) %>
+<% end %>
+
+</div>
+
+<div class = "signupl">
+<%= link_to "Sign Up", new_user_path, class: "btn btn-lg btn-success"%>
+</div>

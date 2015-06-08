@@ -1,4 +1,4 @@
-<h1>this blog</h1>
+<div class = "blog" >
 	<%= notice %>
 
 <div>
@@ -8,7 +8,7 @@
 	<p><strong>Description: </strong><%= @blog.description%></p>
 	
 <div>
-  <% if current_user.id == @blog.user_id %>
+  <% if current_user and current_user.id == @blog.user_id %>
     
         <td><%= link_to "Edit ", edit_blog_path() %></td>
           <td><%= link_to 'Delete', [@blog],
@@ -37,9 +37,11 @@
 <%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
 <% end %>
 
-<td><%= link_to "User's Profile", user_page_path(@blog.user_id) %>
-<td><%= link_to "All Blogs", blogs_path%></td>
-<td><%= link_to "Map", maps_path, class: "btn btn-xs btn-primary" %></td>
+<td><%= link_to "User's Profile", user_page_path(@blog.user_id), class: "btn btn-s btn-success"  %>
+<td><%= link_to "All Blogs", blogs_path, class: "btn btn-s btn-success" %></td>
+<td><%= link_to "Map", maps_path, class: "btn btn-s btn-success" %></td>
+</div>
+
 </div>
 
 

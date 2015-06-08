@@ -1,4 +1,4 @@
-
+<div class = "profile" >
 <% if current_user %>
 
   <p>
@@ -42,9 +42,11 @@
   <strong>Profile Picture: </strong><%= image_tag @user.image.url(:large)%>
   </p>
  <div>
-    <%= link_to "Visit this user's blogs", user_all_blogs_path(@user) %>
-    <%= link_to "Sign Up", new_user_path %>
-    <%= link_to "Log In", login_path %>
-    <%= link_to "Back", blogs_path %>
+    <%= link_to "Visit this user's blogs", user_all_blogs_path(@user), class: "btn btn-s btn-success" %>
+    <%= link_to "Sign Up", new_user_path, class: "btn btn-s btn-success" %>
+    <%= link_to "Log In", login_path, class: "btn btn-s btn-success" %>
+    <%= link_to "Back", blogs_path, class: "btn btn-s btn-success" %>
   </div>
 <% end %>
+
+</div>
