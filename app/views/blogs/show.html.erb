@@ -1,46 +1,48 @@
 <div class = "blog" >
-	<%= notice %>
+<%= notice %>
 
-<div>
+	<div>
 	<p><strong>Title: </strong><%= @blog.title %></p>
 	<p><strong>Country: </strong><%= @blog.country%></p>
 	<p><strong>Picture: </strong><td><%= image_tag @blog.image.url(:large) %></td></p>
 	<p><strong>Description: </strong><%= @blog.description%></p>
+
 	
-<div>
-  <% if current_user and current_user.id == @blog.user_id %>
-    
-        <td><%= link_to "Edit ", edit_blog_path() %></td>
-          <td><%= link_to 'Delete', [@blog],
-                  method: :delete,
-                  data: { confirm: 'please login to delete this post' } %></td>
-            <% end %>
+	<% if current_user and current_user.id == @blog.user_id %>
 
-<h2> Like: <%= @blog.likes.count %></h2>
+	<td><%= link_to "Edit ", edit_blog_path() %></td>
+	<td><%= link_to 'Delete', [@blog],
+	  method: :delete,
+	  data: { confirm: 'please login to delete this post' } %></td>
+	<% end %>
 
-<h2>Comments</h2> <!-- listing out all the comment for this post -->
-<% @blog.comments.each do |c| %> <!-- list out all the comments in the context of the article -->
+	<h2> Like: <%= @blog.likes.count %></h2>
+
+	<h2>Comments</h2> <!-- listing out all the comment for this post -->
+	<% @blog.comments.each do |c| %> <!-- list out all the comments in the context of the article -->
 	<p><strong>User</strong><%= c.username %></p>
 
 	<p><strong>Comment:</strong><%= c.body %></p>
-	
+
 	<% if current_user and current_user.id == c.user_id %>
-		<%= link_to "Edit this comment", edit_blog_comments_path(@blog.id, c) %>
-		<%= link_to "Delete this comment", blog_comment_destroy_path(@blog, c), method: :delete, data: { confirm: "Are you sure you want to delete this comment?"} %>
+	<%= link_to "Edit this comment", edit_blog_comments_path(@blog.id, c) %>
+	<%= link_to "Delete this comment", blog_comment_destroy_path(@blog, c), method: :delete, data: { confirm: "Are you sure you want to delete this comment?"} %>
 	<% end %>
-<% end %>
+	<% end %>
 
-<% if current_user and current_user.id != @blog.user_id%>
-<h2>Like</h2>
-<%= button_to "Like", @like, :method => "get" %>
-<h2>Add a comment:</h2> <!-- add a comment form -->
-<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
-<% end %>
+	<% if current_user and current_user.id != @blog.user_id%>
+	<h2>Like</h2>
+	<%= button_to "Like", @like, :method => "get" %>
+	<h2>Add a comment:</h2> <!-- add a comment form -->
+	<%= render 'comments/form' %> <!-- to pull out the form from the comment view folder -->
+	<% end %>
+	<div>
 
-<td><%= link_to "User's Profile", user_page_path(@blog.user_id), class: "btn btn-s btn-success"  %>
-<td><%= link_to "All Blogs", blogs_path, class: "btn btn-s btn-success" %></td>
-<td><%= link_to "Map", maps_path, class: "btn btn-s btn-success" %></td>
-</div>
+	<td><%= link_to "User's Profile", user_page_path(@blog.user_id), class: "btn btn-s btn-success"  %>
+	<td><%= link_to "All Blogs", blogs_path, class: "btn btn-s btn-success" %></td>
+	<td><%= link_to "Map", maps_path, class: "btn btn-s btn-success" %></td>
+	
+	</div>
 
 </div>
 

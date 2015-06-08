@@ -121,6 +121,7 @@ BODY  {
   color: white;
   height: 100%;
   border: solid black 5px;
+  padding-right: 90px;
 }
 
 .buttons {
@@ -154,8 +155,9 @@ H1 {
 }
 
 .profile {
+
   width: 30%;
-  height: 400px;
+  height: 100%;
   background: black;
   opacity: 0.85;
  margin: 0 auto;
@@ -163,6 +165,7 @@ H1 {
  text-align: center;
  border-radius: 5%;
  padding-botton: 10px;
+ padding-top: 20px;
 }
 
 .signup {
@@ -178,7 +181,7 @@ width: 30%;
 
 .blog {
 width: 30%;
-  height: 600px;
+  height: 100%;
   background: black;
   opacity: 0.85;
  margin: 0 auto;
@@ -208,3 +211,15 @@ width: 30%;
   
 }
 
+.user_profile {
+width: 30%;
+  height: 100%;
+  background: black;
+  opacity: 0.85;
+ margin: 0 auto;
+ margin-top: 10%;
+ text-align: center;
+ border-radius: 5%;
+ padding-botton: 10px;
+  
+}
