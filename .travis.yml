@@ -3,4 +3,3 @@ language: ruby
 	  - 2.2.2
 	  - 2.1.5
 	cache: bundler
-	
